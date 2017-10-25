@@ -8,17 +8,16 @@ using UnityEngine.UI;
 /// </summary>
 public class AddPartsManager : MonoBehaviour
 {
-    //声明一个集合，存储所有零件模型
-    private List<Node> nodeList = new List<Node>();
-
     //声明父物体，（也就是LCD1）
     private AssembleController RootPartGameObject;
 
     //父物体的transform组件
     private Transform RootTrans;
 
-    //声明一个框，用来显示测试数据
-    private Text Test;
+    /// <summary>
+    /// UI界面，此处仅仅作为初始化UI界面的写法，后续会在统一的地方做初始化
+    /// </summary>
+    private UIPartsPage _UIPartsPage;
 
     // Use this for initialization
     void Start()
@@ -27,8 +26,15 @@ public class AddPartsManager : MonoBehaviour
         RootPartGameObject = FindObjectOfType<AssembleController>();
         //给父物体的transform组件赋值
         RootTrans = RootPartGameObject.transform;
-        //给这个测试框初始化
-        Test = GameObject.Find("Canvas/Test").GetComponent<Text>();
+
+        //初始化零件集合
+        if (null == NodesCommon.Instance)
+        {
+            //实例化零件公共类
+            var _NodesCommon = new GameObject("NodesCommon", typeof(NodesCommon));
+            //实例化的时候，会生成一个空物体，为该空物体指定一个父物体，方便查找和统一管理，不要随意摆放，影响unity的控制面板的管理
+            _NodesCommon.transform.parent = gameObject.transform;
+        }
 
         if (null != RootTrans)
         {
@@ -44,12 +50,15 @@ public class AddPartsManager : MonoBehaviour
                     //给物体添加碰撞器，Hololens选中的物体必须带有Collider
                     node.gameObject.AddComponent<BoxCollider>();
                     //将这个物体的Node添加到集合
-                    nodeList.Add(node);
+                    NodesCommon.Instance.AddNodeToList(node);
                 }
             }
         }
-        //让测试框打印程序一共扫描到LDC1有多少模型
-        Test.text = "LCD1机器一共有" + nodeList.Count + "个模型";
+
+        //获取UI界面的脚本
+        _UIPartsPage = GameObject.Find("Canvas/BG/PartsUI/PartsPanel").GetComponent<UIPartsPage>();
+        //对UI界面脚本进行初始化，实际上就是控制UI在扫描零件之后初始化，防止UI界面没有数据，空实现，回报错或者界面没东西
+        _UIPartsPage.Init();
     }
 
     // Update is called once per frame

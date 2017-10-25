@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 public class Node : MonoBehaviour
 {
+    public string PartName;                    //零件的名称
 
     // Use this for initialization
     void Start()
     {
-
+        PartName = gameObject.name;                   //给零件的名称初始化，让零件的名称等于该脚本所指向的零件模型的名称
     }
 
     // Update is called once per frame
