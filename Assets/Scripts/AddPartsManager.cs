@@ -49,9 +49,27 @@ public class AddPartsManager : MonoBehaviour
                     node = child.gameObject.GetComponent<Node>();
                     //给物体添加碰撞器，Hololens选中的物体必须带有Collider
                     node.gameObject.AddComponent<BoxCollider>();
+                    //将零件大小存入Node中，也可以理解为替Node中的LocalScale赋值
+                    node.LocalScale = child.localScale;
+
                     //将这个物体的Node添加到集合
                     NodesCommon.Instance.AddNodeToList(node);
                 }
+            }
+        }
+
+        //定义一个放缩值，默认为1，不放缩
+        float ScalingNum = 1;
+        //将零件集合循环
+        for (int i = 0; i < NodesCommon.Instance.GetNodeList().Count; i++)
+        {
+            //如果零件有MeshFilter组件，那么就进行放缩
+            if (null != NodesCommon.Instance.GetNodeList()[i].GetComponent<MeshFilter>())
+            {
+                //获取放缩比例
+                ScalingNum = NodesCommon.Instance.GetNodeList()[i].Scaling();
+                //进行零件放缩
+                NodesCommon.Instance.GetNodeList()[i].gameObject.transform.localScale /= ScalingNum;
             }
         }
 
