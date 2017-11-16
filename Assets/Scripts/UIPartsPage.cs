@@ -38,6 +38,21 @@ public class UIPartsPage : MonoBehaviour
     private int Page_Count = 12;
 
     /// <summary>
+    /// 上一页
+    /// </summary>
+    private Button PreviousPage;
+
+    /// <summary>
+    /// 下一页
+    /// </summary>
+    private Button NextPage;
+
+    /// <summary>
+    /// 显示当前页数的标签
+    /// </summary>
+    private Text m_PanelText;
+
+    /// <summary>
     /// 所有零件的集合
     /// </summary>
     private List<Node> NodesList = new List<Node>();
@@ -76,6 +91,20 @@ public class UIPartsPage : MonoBehaviour
         {
             Debug.LogError("NodesCommon没有初始化！");
         }
+
+        //找到下一页的UI按钮
+        NextPage = GameObject.Find("Canvas/BG/PartsUI/PartsBtn/NextPage").GetComponent<Button>();
+        //找到上一页的UI按钮
+        PreviousPage = GameObject.Find("Canvas/BG/PartsUI/PartsBtn/PreviousPage").GetComponent<Button>();
+        //找到当前一页的UI文本
+        m_PanelText = GameObject.Find("Canvas/BG/PartsUI/PartsBtn/ViewPageText").GetComponent<Text>();
+
+        //为下一页按钮添加事件
+        NextPage.onClick.AddListener(() => { Next(); });
+        //为上一页按钮添加事件
+        PreviousPage.onClick.AddListener(() => { Previous(); });
+
+
         //刷新界面
         RefreshItems();
     }
@@ -98,6 +127,7 @@ public class UIPartsPage : MonoBehaviour
             m_PageIndex = m_PageCount;
         //重新加载，并显示，当前页面的零件数据
         BindPage(m_PageIndex);
+        m_PanelText.text = string.Format("第" + "{0}/{1}" + "页", m_PageIndex.ToString(), m_PageCount.ToString());
     }
 
     /// <summary>
@@ -122,6 +152,7 @@ public class UIPartsPage : MonoBehaviour
 
         //重新加载，并显示，当前页面的零件数据
         BindPage(m_PageIndex);
+        m_PanelText.text = string.Format("第" + "{0}/{1}" + "页", m_PageIndex.ToString(), m_PageCount.ToString());
     }
 
 
@@ -258,7 +289,7 @@ public class UIPartsPage : MonoBehaviour
 
         //显示和加载当前页的零件和零件按钮
         BindPage(m_PageIndex);
-
+        m_PanelText.text = string.Format("第" + "{0}/{1}" + "页", m_PageIndex.ToString(), m_PageCount.ToString());
     }
 
 }
