@@ -62,6 +62,8 @@ public class UIPartsPage : MonoBehaviour
     /// </summary>
     private int InitFlag = 0;
 
+    private List<Button> BtnList = new List<Button>();          //零件按钮集合
+
     // Use this for initialization
     void Start()
     {
@@ -89,6 +91,7 @@ public class UIPartsPage : MonoBehaviour
         }
         else
         {
+            //如果零件集合，打印错误信息，方便找出问题
             Debug.LogError("NodesCommon没有初始化！");
         }
 
@@ -104,6 +107,11 @@ public class UIPartsPage : MonoBehaviour
         //为上一页按钮添加事件
         PreviousPage.onClick.AddListener(() => { Previous(); });
 
+        foreach (Transform tran in transform)
+        {
+            BtnList.Add(tran.gameObject.GetComponent<Button>());
+            EventTriggerListener.Get(tran.gameObject).onClick = BtnClick;
+        }
 
         //刷新界面
         RefreshItems();
@@ -154,7 +162,6 @@ public class UIPartsPage : MonoBehaviour
         BindPage(m_PageIndex);
         m_PanelText.text = string.Format("第" + "{0}/{1}" + "页", m_PageIndex.ToString(), m_PageCount.ToString());
     }
-
 
     /// <summary>
     /// 绑定指定索引处的页面，显示加载该页的零件元素和数据
@@ -292,4 +299,78 @@ public class UIPartsPage : MonoBehaviour
         m_PanelText.text = string.Format("第" + "{0}/{1}" + "页", m_PageIndex.ToString(), m_PageCount.ToString());
     }
 
+    /// <summary>
+    /// 零件按钮的点击事件
+    /// </summary>
+    /// <param name="go">被点击的按钮在unity里面的游戏物体</param>
+    private void BtnClick(GameObject go)
+    {
+        Node node;                                  //声明一个变量，用来代表被点击的零件
+
+        GameObject gameobj;                         //克隆一份,作为安装的零件
+        GameObject gameOb;                          //克隆一份作为提示
+
+        //循环零件按钮
+        for (int i = 0; i < BtnList.Count; i++)
+        {
+            //零件按钮的名称等于被点击的物体的名字
+            if (BtnList[i].name == go.name)
+            {
+                //获取被点击按钮对应的LCD1零件物体的Node对象
+                node = m_ItemsList[(m_PageIndex - 1) * Page_Count + i];
+
+                //将零件架上被点击的零件克隆一份，作为后续被安装的零件
+                gameobj = Instantiate(node.gameObject, node.gameObject.transform, true);
+                //克隆的零件的名称等于零件架上的物体名称
+                gameobj.name = node.name;
+                //克隆的零件父物体都是RuntimeObject/Nodes，方便统一管理
+                gameobj.transform.parent = GameObject.Find("RuntimeObject/Nodes").transform;
+                //克隆的物体大小等于零件架上物体缩放之前的大小，这个值在放入零件架之前被记录过
+                gameobj.transform.localScale = node.LocalScale;
+
+                //将零件架上的物体再克隆一份，作为后续提示位置
+                gameOb = Instantiate(node.gameObject, node.gameObject.transform, true);
+                //提示零件名称需要特殊处理一下
+                gameOb.name = node.name + "_Hide";
+                //提示零件的父物体也放入RuntimeObject/Nodes，方便统一管理
+                gameOb.transform.parent = GameObject.Find("RuntimeObject/Nodes").transform;
+                //提示零件的位置，等于零件最终被安装的位置，这样才能起到提示作用
+                gameOb.transform.position = node.EndPos;
+                //替换提示零件的材质，让提示零件显示透明蓝色
+                gameOb.GetComponent<MeshRenderer>().sharedMaterial = GlobalVar.HideLightMate;
+                //提示零件的大小，等于零件架上的零件缩放之前的大小
+                gameOb.transform.localScale = node.LocalScale;
+                
+                StartCoroutine(OnMovesIEnumerator(gameobj, gameobj.transform.position));
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 零件飞下零件架的协程动画
+    /// </summary>
+    /// <param name="_GameObject">要飞下零件架的零件物体</param>
+    /// <param name="statPos">飞下来的起点位置</param>
+    /// <returns></returns>
+    IEnumerator OnMovesIEnumerator(GameObject _GameObject, Vector3 statPos)
+    {
+        float f = 0;   //定义一个参数，记录零件飞的时间
+        while (true)
+        {
+            //如果飞的时间小于1s
+            if (f <= 1)
+            {
+                //零件当前位置，等于起点和终点之间的一个插值，这个插值取决与零件飞的时间和零件飞行的总时间（总时间默认为1s）
+                _GameObject.transform.position = Vector3.Lerp(statPos, new Vector3(2.25f, -0.5f, 6), f);
+                f += Time.deltaTime;    //零件飞的时间每一帧自加
+            }
+            else
+            {
+                //如果飞行时间大于1s，那么结束
+                break;
+            }
+            yield return new WaitForSeconds(0);
+        }
+    }
 }

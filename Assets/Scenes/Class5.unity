@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &92840376
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -499,6 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &116626534
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -745,6 +747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &261347653
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -980,6 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &311808855
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1063,6 +1067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &377957370
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1298,6 +1303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!1 &439909501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &439909504
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1670,6 +1677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &509532638
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2088,6 +2096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &604215721
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2210,6 +2219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &680795367
 Prefab:
   m_ObjectHideFlags: 0
@@ -2607,6 +2617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &705301013
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2690,6 +2701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &713489512
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2773,6 +2785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &718153682
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2938,6 +2951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &824803703
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3247,6 +3261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!1 &955314671
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,6 +3380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &964079968
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3626,6 +3642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &998678583
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3993,6 +4010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1037640280
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4076,6 +4094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1053377171
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4198,6 +4217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1066789749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,6 +4375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1086460184
 GameObject:
   m_ObjectHideFlags: 0
@@ -5176,6 +5197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1268227826
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6002,6 +6024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1450128943
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6350,6 +6373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1562625618
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6729,6 +6753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1636872655
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6975,6 +7000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1735087224
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7426,6 +7452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1898029254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7620,6 +7647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1919886614
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7703,6 +7731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1926024168
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7899,6 +7928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!1 &2021592975
 GameObject:
   m_ObjectHideFlags: 0
@@ -8056,6 +8086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   LocalScale: {x: 0, y: 0, z: 0}
+  EndPos: {x: 0, y: 0, z: 0}
 --- !u!23 &2049182085
 MeshRenderer:
   m_ObjectHideFlags: 0

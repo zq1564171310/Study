@@ -51,6 +51,8 @@ public class AddPartsManager : MonoBehaviour
                     node.gameObject.AddComponent<BoxCollider>();
                     //将零件大小存入Node中，也可以理解为替Node中的LocalScale赋值
                     node.LocalScale = child.localScale;
+                    //记下零件的安装位置
+                    node.EndPos = child.transform.position;
 
                     //将这个物体的Node添加到集合
                     NodesCommon.Instance.AddNodeToList(node);

@@ -12,6 +12,8 @@ public class Node : MonoBehaviour
 
     public Vector3 LocalScale;                //记录零件原本大小，因为后续可能会将零件缩放等操作
 
+    public Vector3 EndPos;                   //零件的安装位置
+
     // Use this for initialization
     void Start()
     {
