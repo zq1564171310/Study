@@ -346,6 +346,14 @@ public class UIPartsPage : MonoBehaviour
                 gameobj.transform.parent = GameObject.Find("RuntimeObject/Nodes").transform;
                 //克隆的物体大小等于零件架上物体缩放之前的大小，这个值在放入零件架之前被记录过
                 gameobj.transform.localScale = node.LocalScale;
+                //添加拖拽脚本的处理逻辑类
+                gameobj.AddComponent<NodeManager>();
+                //添加拖拽脚本
+                gameobj.AddComponent<HandDraggable>();
+                //让物体在被拖拽的时候，不允许方向上的转动，仅仅只是位置上的移动
+                gameobj.GetComponent<HandDraggable>().RotationMode = HandDraggable.RotationModeEnum.LockObjectRotation;
+                //给物体添加碰撞器，Hololens选中的物体必须带有Collider
+                gameobj.AddComponent<BoxCollider>();
 
                 //将零件架上的物体再克隆一份，作为后续提示位置
                 gameOb = Instantiate(node.gameObject, node.gameObject.transform, true);
@@ -359,9 +367,7 @@ public class UIPartsPage : MonoBehaviour
                 gameOb.GetComponent<MeshRenderer>().sharedMaterial = GlobalVar.HideLightMate;
                 //提示零件的大小，等于零件架上的零件缩放之前的大小
                 gameOb.transform.localScale = node.LocalScale;
-                //添加拖拽脚本
-                gameOb.AddComponent<NodeManager>();
-
+               
                 StartCoroutine(OnMovesIEnumerator(gameobj, gameobj.transform.position));
 
 

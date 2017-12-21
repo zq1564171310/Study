@@ -52,8 +52,6 @@ public class AddPartsManager : MonoBehaviour
                 {
                     //获取零件的node脚本
                     node = child.gameObject.GetComponent<Node>();
-                    //给物体添加碰撞器，Hololens选中的物体必须带有Collider
-                    node.gameObject.AddComponent<BoxCollider>();
                     //将零件大小存入Node中，也可以理解为替Node中的LocalScale赋值
                     node.LocalScale = child.localScale;
                     //记下零件的安装位置
