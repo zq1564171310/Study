@@ -15,9 +15,14 @@ public class AddPartsManager : MonoBehaviour
     private Transform RootTrans;
 
     /// <summary>
-    /// UI界面，此处仅仅作为初始化UI界面的写法，后续会在统一的地方做初始化
+    /// UI零件分页界面
     /// </summary>
     private UIPartsPage _UIPartsPage;
+
+    /// <summary>
+    /// UI零件分类界面
+    /// </summary>
+    private UIPartsPanelClass _UIPartsPanelClass;
 
     // Use this for initialization
     void Start()
@@ -53,6 +58,31 @@ public class AddPartsManager : MonoBehaviour
                     node.LocalScale = child.localScale;
                     //记下零件的安装位置
                     node.EndPos = child.transform.position;
+                    //记录零件名称
+                    node.PartName = child.transform.name;
+
+                    #region  Test      
+                    if (node.PartName.Contains("Cube"))
+                    {
+                        node.Type = "立方体";
+                    }
+                    else if (node.PartName.Contains("Sphere"))
+                    {
+                        node.Type = "球体";
+                    }
+                    else if (node.PartName.Contains("Sphere"))
+                    {
+                        node.Type = "胶囊体";
+                    }
+                    else if (node.PartName.Contains("Cylinder"))
+                    {
+                        node.Type = "圆柱体";
+                    }
+                    else
+                    {
+                        node.Type = "其他";
+                    }
+                    #endregion
 
                     //将这个物体的Node添加到集合
                     NodesCommon.Instance.AddNodeToList(node);
@@ -75,10 +105,15 @@ public class AddPartsManager : MonoBehaviour
             }
         }
 
-        //获取UI界面的脚本
+        //获取UI零件分页界面的脚本
         _UIPartsPage = GameObject.Find("Canvas/BG/PartsUI/PartsPanel").GetComponent<UIPartsPage>();
-        //对UI界面脚本进行初始化，实际上就是控制UI在扫描零件之后初始化，防止UI界面没有数据，空实现，回报错或者界面没东西
+        //获取UI零件分类脚本
+        _UIPartsPanelClass = GameObject.Find("Canvas/BG/PartsUI/PartsClassPanel").GetComponent<UIPartsPanelClass>();
+
+        //对UI分页界面脚本进行初始化，实际上就是控制UI在扫描零件之后初始化，防止UI界面没有数据，空实现，回报错或者界面没东西
         _UIPartsPage.Init();
+        //对UI分类界面脚本进行初始化，实际上就是控制UI在扫描零件之后初始化，防止UI界面没有数据，空实现，回报错或者界面没东西
+        _UIPartsPanelClass.Init();
     }
 
     // Update is called once per frame

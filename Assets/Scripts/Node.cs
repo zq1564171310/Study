@@ -14,6 +14,8 @@ public class Node : MonoBehaviour
 
     public Vector3 EndPos;                   //零件的安装位置
 
+    public string Type;                      //零件类型
+
     // Use this for initialization
     void Start()
     {

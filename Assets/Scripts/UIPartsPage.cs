@@ -58,6 +58,11 @@ public class UIPartsPage : MonoBehaviour
     private List<Node> NodesList = new List<Node>();
 
     /// <summary>
+    /// 零件类型
+    /// </summary>
+    private string m_Type;
+
+    /// <summary>
     /// 刷新界面用的
     /// </summary>
     private int InitFlag = 0;
@@ -272,6 +277,11 @@ public class UIPartsPage : MonoBehaviour
     /// <param name="type"></param>
     public void RefreshItems()
     {
+        if (null != GameObject.Find("Canvas/BG/PartsUI/PartsClassPanel"))
+        {
+            m_Type = GameObject.Find("Canvas/BG/PartsUI/PartsClassPanel").GetComponent<UIPartsPanelClass>().GetPartsType();
+        }
+
         //判断零件集合是否为空，如果为空就新建一个零件集合
         if (null == m_ItemsList)
         {
@@ -285,7 +295,10 @@ public class UIPartsPage : MonoBehaviour
         //将扫描到的零件集合的零件添加到UI的零件集合中
         for (int i = 0; i < NodesList.Count; i++)
         {
-            m_ItemsList.Add(NodesList[i]);
+            if (m_Type == NodesList[i].Type)
+            {
+                m_ItemsList.Add(NodesList[i]);
+            }
         }
 
         //计算元素总个数
@@ -293,6 +306,11 @@ public class UIPartsPage : MonoBehaviour
 
         //计算总页数
         m_PageCount = (m_ItemsCount % Page_Count) == 0 ? m_ItemsCount / Page_Count : (m_ItemsCount / Page_Count) + 1;
+
+        if (m_PageIndex != 1)
+        {
+            m_PageIndex = 1;  //每次刷新都必须把页面重置，防止新的页面页数不够
+        }
 
         //显示和加载当前页的零件和零件按钮
         BindPage(m_PageIndex);
@@ -308,6 +326,7 @@ public class UIPartsPage : MonoBehaviour
         Node node;                                  //声明一个变量，用来代表被点击的零件
 
         GameObject gameobj;                         //克隆一份,作为安装的零件
+
         GameObject gameOb;                          //克隆一份作为提示
 
         //循环零件按钮
@@ -340,8 +359,12 @@ public class UIPartsPage : MonoBehaviour
                 gameOb.GetComponent<MeshRenderer>().sharedMaterial = GlobalVar.HideLightMate;
                 //提示零件的大小，等于零件架上的零件缩放之前的大小
                 gameOb.transform.localScale = node.LocalScale;
-                
+                //添加拖拽脚本
+                gameOb.AddComponent<NodeManager>();
+
                 StartCoroutine(OnMovesIEnumerator(gameobj, gameobj.transform.position));
+
+
                 break;
             }
         }

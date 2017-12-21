@@ -36,4 +36,28 @@ public class NodesCommon : Singleton<NodesCommon>
     {
 
     }
+
+    /// <summary>
+    /// 获取零件类型
+    /// </summary>
+    /// <returns></returns>
+    public List<string> GetNodesTypes()
+    {
+        List<string> list = new List<string>();
+        if (0 < NodeList.Count)
+        {
+            for (int i = 0; i < NodeList.Count; i++)
+            {
+                if (!list.Contains(NodeList[i].Type))
+                {
+                    list.Add(NodeList[i].Type);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("没有获取到零件，或者零件加上没有零件");
+        }
+        return list;
+    }
 }
