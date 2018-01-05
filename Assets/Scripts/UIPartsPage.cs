@@ -329,6 +329,8 @@ public class UIPartsPage : MonoBehaviour
 
         GameObject gameOb;                          //克隆一份作为提示
 
+        GameObject Txt;                             //克隆一份文本，作为被拖动的零件的显示名称
+
         //循环零件按钮
         for (int i = 0; i < BtnList.Count; i++)
         {
@@ -367,9 +369,18 @@ public class UIPartsPage : MonoBehaviour
                 gameOb.GetComponent<MeshRenderer>().sharedMaterial = GlobalVar.HideLightMate;
                 //提示零件的大小，等于零件架上的零件缩放之前的大小
                 gameOb.transform.localScale = node.LocalScale;
-               
+
+                //开启协程，让零件飞出
                 StartCoroutine(OnMovesIEnumerator(gameobj, gameobj.transform.position));
 
+                //生成一个文本框，作为被拖拽零件的名称提示
+                Txt = Instantiate(GameObject.Find("Canvas/BG/PartsUI/PartsPanel/Button1/Text"), GameObject.Find("Canvas/BG/PartsUI/PartsPanel/Button1").transform, true);
+                //给文本框命名
+                Txt.name = "Text" + node.name;
+                //给文本框一个初始位置
+                Txt.transform.position = new Vector3(2.25f, -0.5f, 6);
+                //把文本零件的名称放入文本框中
+                Txt.GetComponent<Text>().text = node.gameObject.name;
 
                 break;
             }

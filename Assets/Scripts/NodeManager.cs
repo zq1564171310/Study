@@ -39,6 +39,15 @@ public class NodeManager : MonoBehaviour, IManipulationHandler
                     gameObject.transform.position = gameObject.GetComponent<Node>().EndPos;
                     //删除被安装物体上面的碰撞体，防止后续物体发生碰撞
                     Destroy(gameObject.GetComponent<BoxCollider>());
+
+                    //删除被拖拽的零件的名称提示
+                    Destroy(GameObject.Find("Canvas/BG/PartsUI/PartsPanel/Button1/Text" + gameObject.GetComponent<Node>().name).gameObject);
+                    //删除提示的安装位置的物体
+                    Destroy(GameObject.Find("RuntimeObject/Nodes/" + gameObject.GetComponent<Node>().name + "_Hide"));
+                }
+                else   //没有进入吸附区域，继续拖拽
+                {
+                    GameObject.Find("Canvas/BG/PartsUI/PartsPanel/Button1/Text" + gameObject.GetComponent<Node>().name).transform.position = gameObject.transform.position;
                 }
             }
         }
